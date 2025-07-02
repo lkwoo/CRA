@@ -16,40 +16,29 @@ class ALU :
     def set_opcode(self, opcode):
         self.opcode = opcode
 
-    def enable_signal(self, r : ALU_result):
-        if (self.opcode == "ADD") and (self.opcode != "MUL") and (self.opcode != "SUB") :
-            if self.operand1 != -1 and self.operand2 != -1 :
-                result = self.operand1 + self.operand2
-                r.set_result(result)
-                r.set_status(0)
-            elif self.operand1 == -1 :
-                r.set_result(65535)
-                r.set_status(1)
-            elif self.operand2 == -1 :
-                r.set_result(65535)
-                r.set_status(2)
-        elif (self.opcode != "ADD") and (self.opcode == "MUL") and (self.opcode != "SUB") :
-            if self.operand1 != -1 and self.operand2 != -1 :
-                result = self.operand1 * self.operand2
-                r.set_result(result)
-                r.set_status(0)
-            elif self.operand1 == -1 :
-                r.set_result(65535)
-                r.set_status(1)
-            elif self.operand2 == -1 :
-                r.set_result(65535)
-                r.set_status(2)
-        elif (self.opcode != "ADD") and (self.opcode != "MUL") and (self.opcode == "SUB"):
-            if self.operand1 != -1 and self.operand2 != -1 :
-                result = self.operand1 - self.operand2
-                r.set_result(result)
-                r.set_status(0)
-            elif self.operand1 == -1:
-                r.set_result(65535)
-                r.set_status(1)
-            elif self.operand2 == -1:
-                r.set_result(65535)
-                r.set_status(2)
+    def get_result(self, operand1, operand2, opcode):
+        if opcode == "ADD":
+            return operand1 + operand2
+        elif opcode == "MUL":
+            return operand1 * operand2
+        elif opcode == "SUB":
+            return operand1 - operand2
         else:
+            return 65535
+
+    def enable_signal(self, r : ALU_result):
+        if self.opcode not in ["ADD", "MUL", "SUB"]:
             r.set_result(65535)
             r.set_status(3)
+            return
+        if self.operand1 == -1:
+            r.set_result(65535)
+            r.set_status(1)
+            return
+        if self.operand2 == -1:
+            r.set_result(65535)
+            r.set_status(2)
+            return
+
+        r.set_result(self.get_result(self.operand1, self.operand2, self.opcode))
+        r.set_status(0)
