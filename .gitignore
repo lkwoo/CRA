@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs and environment files
+*.log
+.env
+*.env
+*.sqlite3
+
+# Test results
+*.coverage
+coverage.xml
+*.egg-info/
+
+# Virtual environment
+venv/
+env/
+ENV/
