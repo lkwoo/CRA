@@ -34,13 +34,9 @@ class Rental:
         return amount
 
     def get_frequent_renter_points(self) -> int:
-        rental_days = self.get_days_rented
-
-        frequent_renter_points = 1
-        if (self.get_price_code() == Movie.NEW_RELEASE) and rental_days > 1:
-            frequent_renter_points += 1
-
-        return frequent_renter_points
+        if (self.get_price_code() == Movie.NEW_RELEASE) and self.get_days_rented > 1:
+            return 2
+        return 1
 
     def get_result(self) -> str:
         return f"\t{self._movie.get_title}\t{str(self.get_amount())}\n"
