@@ -1,0 +1,7 @@
+[발표자료]
+https://docs.google.com/presentation/d/1-mTR4y1Uc76s0zGvnIO98-isWedg6IJa/edit?usp=sharing&ouid=104036983259048692194&rtpof=true&sd=true
+
+[기능명세]
+https://github.com/JonJaryongLee/ssd-project-samsung-py
+
+
