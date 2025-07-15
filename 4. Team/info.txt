@@ -4,4 +4,13 @@ https://docs.google.com/presentation/d/1-mTR4y1Uc76s0zGvnIO98-isWedg6IJa/edit?us
 [기능명세]
 https://github.com/JonJaryongLee/ssd-project-samsung-py
 
+[rebase]
+git checkout main
+git pull origin main
+
+git checkout feature/login
+git rebase main
+# (충돌 발생 시 파일 수정 + git add + git rebase --continue 반복)
+
+git push origin feature/login --force-with-lease
 
